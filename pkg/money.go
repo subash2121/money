@@ -22,5 +22,18 @@ func (money *Money) AddRupee(rupee int) {
 }
 
 func (money *Money) AddPaise(paise int) {
-	money.paise += 50
+	if money.GetPaise()+paise%100 >= 100 {
+		money.rupee += (money.GetPaise() + paise) / 100
+		money.paise = (money.GetPaise() + paise) % 100
+	} else if paise >= 100 {
+		money.rupee += paise / 100
+		money.paise += paise % 100
+	} else {
+		money.paise += paise
+	}
+}
+
+func (money *Money) AddMoney(moneyTwo Money) {
+	money.AddRupee(moneyTwo.GetRupee())
+	money.AddPaise(moneyTwo.GetPaise())
 }
