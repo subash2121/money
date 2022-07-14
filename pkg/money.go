@@ -20,3 +20,7 @@ func (money Money) GetPaise() int {
 func (money *Money) AddRupee(rupee int) {
 	money.rupee += rupee
 }
+
+func (money *Money) AddPaise(paise int) {
+	money.paise += 50
+}

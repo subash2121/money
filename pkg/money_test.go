@@ -32,3 +32,11 @@ func TestAddRupee(t *testing.T) {
 		assert.Equal(t, 15, money.GetRupee())
 	})
 }
+
+func TestAddPaise(t *testing.T) {
+	t.Run("should add paise to the existing money", func(t *testing.T) {
+		money := NewMoney()
+		money.AddPaise(50)
+		assert.Equal(t, 50, money.GetPaise())
+	})
+}
