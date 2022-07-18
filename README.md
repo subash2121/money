@@ -1,6 +1,6 @@
 # Money
 
-A package to process indian currency in rupees or paise to add values of money.
+A package to process indian currency in rupees or paise to add values of money and check for equality.
 
 ## Problem Statement
 
@@ -18,19 +18,35 @@ A package to process indian currency in rupees or paise to add values of money.
 
 ## Test Instructions
 
-Execute the below command in the directory test file is present.
+Execute the below command 
 
-    $ go test
-
-_For detailed results with necessary information:_
-$ make test
+    $ go test ./...
 
 ## Build Instructions
 
 Execute the below command to build the package
 
-    $ go build
+    $ go build ./...
 
 ## Library Usage
 
-TODO: Write usage instructions here.
+To create a new money
+
+    <variableOne> = NewMoney()
+    <variableTwo> = NewMoney()
+
+To add paise to existing money
+
+    <variableOne>.AddPaise(<amount>)
+
+To add rupee to existing money
+
+    <variableOne>.AddRupee(<amount>)
+
+To add two money
+
+    <variableOne>.AddMoney(<variableTwo>)
+
+To check for equality of two money (returns boolean value)
+
+    <variableOne>.EqualsTo(<variableTwo>)
