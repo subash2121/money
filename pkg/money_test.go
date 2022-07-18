@@ -124,6 +124,22 @@ func TestAddMoney(t *testing.T) {
 	})
 }
 
+func TestSubtractMoney(t *testing.T) {
+	t.Run("should subtract money with 1 rupee and 50 paise with 1 rupee and 30 paise", func(t *testing.T) {
+		moneyOne := NewMoney()
+		moneyOne.AddRupee(1)
+		moneyOne.AddPaise(50)
+
+		moneyTwo := NewMoney()
+		moneyTwo.AddRupee(1)
+		moneyTwo.AddPaise(30)
+
+		moneyOne.SubtractMoney(moneyTwo)
+		assert.Equal(t, 0, moneyOne.GetRupee())
+		assert.Equal(t, 20, moneyOne.GetPaise())
+	})
+}
+
 func TestMoneyEqualsTo(t *testing.T) {
 	t.Run("should return true for money 50 paise and money 50 paise", func(t *testing.T) {
 		moneyOne := NewMoney()

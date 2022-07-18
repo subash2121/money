@@ -50,6 +50,11 @@ func (money *Money) AddMoney(moneyTwo Money) {
 	money.AddPaise(moneyTwo.GetPaise())
 }
 
+func (money *Money) SubtractMoney(moneyTwo Money) {
+	money.SubtractRupee(moneyTwo.GetRupee())
+	money.SubtractPaise(moneyTwo.GetPaise())
+}
+
 func (money Money) EqualsTo(moneyTwo Money) bool {
 	return money == moneyTwo
 }
