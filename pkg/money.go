@@ -19,29 +19,44 @@ func (money Money) GetPaise() int {
 	return money.paise
 }
 
+func InputValidation(input int) bool {
+	if input < 0 {
+		panic("Negative input should not be provided")
+	}
+	return true
+}
+
 func (money *Money) AddRupee(rupee int) {
-	money.rupee += rupee
+	if InputValidation(rupee) {
+		money.rupee += rupee
+	}
 }
 
 func (money *Money) SubtractRupee(rupee int) {
-	money.rupee -= rupee
+	if InputValidation(rupee) {
+		money.rupee -= rupee
+	}
 }
 
 func (money *Money) AddPaise(paise int) {
-	if money.GetPaise()+paise >= unitConversion {
-		money.AddRupee((money.GetPaise() + paise) / unitConversion)
-		money.paise = (money.GetPaise() + paise) % unitConversion
-	} else {
-		money.paise += paise
+	if InputValidation(paise) {
+		if money.GetPaise()+paise >= unitConversion {
+			money.AddRupee((money.GetPaise() + paise) / unitConversion)
+			money.paise = (money.GetPaise() + paise) % unitConversion
+		} else {
+			money.paise += paise
+		}
 	}
 }
 
 func (money *Money) SubtractPaise(paise int) {
-	if money.GetPaise()-paise <= -unitConversion {
-		money.AddRupee((money.GetPaise() - paise) / unitConversion)
-		money.paise = (money.GetPaise() - paise) % unitConversion
-	} else {
-		money.paise -= paise
+	if InputValidation(paise) {
+		if money.GetPaise()-paise <= -unitConversion {
+			money.SubtractRupee(-(money.GetPaise() - paise) / unitConversion)
+			money.paise = (money.GetPaise() - paise) % unitConversion
+		} else {
+			money.paise -= paise
+		}
 	}
 }
 

@@ -11,6 +11,18 @@ func TestNewMoney(t *testing.T) {
 	})
 }
 
+func TestInputValidation(t *testing.T) {
+	t.Run("should panic if negative inputs are given", func(t *testing.T) {
+		assert.Panics(t, func() {
+			InputValidation(-1)
+		})
+	})
+
+	t.Run("should return true if positive inputs are given", func(t *testing.T) {
+		assert.Equal(t, true, InputValidation(1))
+	})
+}
+
 func TestGetRupee(t *testing.T) {
 	t.Run("should return the rupees", func(t *testing.T) {
 		assert.Equal(t, 0, NewMoney().GetRupee())
@@ -31,6 +43,13 @@ func TestAddRupee(t *testing.T) {
 		money.AddRupee(5)
 		assert.Equal(t, 15, money.GetRupee())
 	})
+
+	t.Run("should panic if -5 rupee is added", func(t *testing.T) {
+		money := NewMoney()
+		assert.Panics(t, func() {
+			money.AddRupee(-5)
+		})
+	})
 }
 
 func TestSubtractRupee(t *testing.T) {
@@ -41,6 +60,13 @@ func TestSubtractRupee(t *testing.T) {
 		assert.Equal(t, 10, money.GetRupee())
 		money.SubtractRupee(5)
 		assert.Equal(t, 5, money.GetRupee())
+	})
+
+	t.Run("should panic if -5 rupee is subtracted", func(t *testing.T) {
+		money := NewMoney()
+		assert.Panics(t, func() {
+			money.SubtractRupee(-5)
+		})
 	})
 }
 
@@ -74,6 +100,13 @@ func TestAddPaise(t *testing.T) {
 		assert.Equal(t, 6, money.GetRupee())
 		assert.Equal(t, 50, money.GetPaise())
 	})
+
+	t.Run("should panic if -50 paise is added", func(t *testing.T) {
+		money := NewMoney()
+		assert.Panics(t, func() {
+			money.AddPaise(-50)
+		})
+	})
 }
 
 func TestSubtractPaise(t *testing.T) {
@@ -105,6 +138,13 @@ func TestSubtractPaise(t *testing.T) {
 		money.SubtractPaise(400)
 		assert.Equal(t, -1, money.GetRupee())
 		assert.Equal(t, -50, money.GetPaise())
+	})
+
+	t.Run("should panic if -70 paise is subtracted", func(t *testing.T) {
+		money := NewMoney()
+		assert.Panics(t, func() {
+			money.SubtractPaise(-70)
+		})
 	})
 }
 
