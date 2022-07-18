@@ -62,3 +62,4 @@ To subtract two money
 To check for equality of two money (returns boolean value)
 
     <variableOne>.EqualsTo(<variableTwo>)
+    
