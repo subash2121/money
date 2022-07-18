@@ -56,5 +56,5 @@ func (money *Money) SubtractMoney(moneyTwo Money) {
 }
 
 func (money Money) EqualsTo(moneyTwo Money) bool {
-	return money == moneyTwo
+	return money.rupee == moneyTwo.rupee && money.paise == moneyTwo.paise
 }
