@@ -1,4 +1,4 @@
-# Rectangle
+# Money
 
 A package to process indian currency in rupees or paise to add values of money.
 
