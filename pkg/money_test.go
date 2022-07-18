@@ -33,6 +33,17 @@ func TestAddRupee(t *testing.T) {
 	})
 }
 
+func TestSubtractRupee(t *testing.T) {
+	t.Run("should subtract 10 and 5 rupee to the existing money of 20 rupee", func(t *testing.T) {
+		money := NewMoney()
+		money.AddRupee(20)
+		money.SubtractRupee(10)
+		assert.Equal(t, 10, money.GetRupee())
+		money.SubtractRupee(5)
+		assert.Equal(t, 5, money.GetRupee())
+	})
+}
+
 func TestAddPaise(t *testing.T) {
 	t.Run("should add 50 paise to the new money", func(t *testing.T) {
 		money := NewMoney()
@@ -62,6 +73,38 @@ func TestAddPaise(t *testing.T) {
 		money.AddPaise(400)
 		assert.Equal(t, 6, money.GetRupee())
 		assert.Equal(t, 50, money.GetPaise())
+	})
+}
+
+func TestSubtractPaise(t *testing.T) {
+	t.Run("should subtract 50 paise to the new money", func(t *testing.T) {
+		money := NewMoney()
+		money.SubtractPaise(50)
+		assert.Equal(t, -50, money.GetPaise())
+	})
+
+	t.Run("should subtract 120 paise to the new money as -1 rupee and -20 paise", func(t *testing.T) {
+		money := NewMoney()
+		money.SubtractPaise(120)
+		assert.Equal(t, -1, money.GetRupee())
+		assert.Equal(t, -20, money.GetPaise())
+	})
+
+	t.Run("should subtract 170 paise to existing money having 50 paise as -1 rupee and -20 paise", func(t *testing.T) {
+		money := NewMoney()
+		money.AddPaise(50)
+		money.SubtractPaise(170)
+		assert.Equal(t, -1, money.GetRupee())
+		assert.Equal(t, -20, money.GetPaise())
+	})
+
+	t.Run("should subtract 400 paise to existing money having 2 rupee 50 paise as -1 rupee and -50 paise", func(t *testing.T) {
+		money := NewMoney()
+		money.AddRupee(2)
+		money.AddPaise(50)
+		money.SubtractPaise(400)
+		assert.Equal(t, -1, money.GetRupee())
+		assert.Equal(t, -50, money.GetPaise())
 	})
 }
 

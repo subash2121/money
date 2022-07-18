@@ -23,12 +23,25 @@ func (money *Money) AddRupee(rupee int) {
 	money.rupee += rupee
 }
 
+func (money *Money) SubtractRupee(rupee int) {
+	money.rupee -= rupee
+}
+
 func (money *Money) AddPaise(paise int) {
 	if money.GetPaise()+paise >= unitConversion {
 		money.AddRupee((money.GetPaise() + paise) / unitConversion)
 		money.paise = (money.GetPaise() + paise) % unitConversion
 	} else {
 		money.paise += paise
+	}
+}
+
+func (money *Money) SubtractPaise(paise int) {
+	if money.GetPaise()-paise <= -unitConversion {
+		money.AddRupee((money.GetPaise() - paise) / unitConversion)
+		money.paise = (money.GetPaise() - paise) % unitConversion
+	} else {
+		money.paise -= paise
 	}
 }
 
