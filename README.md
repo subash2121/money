@@ -39,13 +39,25 @@ To add paise to existing money
 
     <variableOne>.AddPaise(<amount>)
 
+To subtract paise to existing money
+
+    <variableOne>.SubtractPaise(<amount>)
+
 To add rupee to existing money
 
     <variableOne>.AddRupee(<amount>)
 
+To subtract rupee to existing money
+
+    <variableOne>.SubtractRupee(<amount>)
+
 To add two money
 
     <variableOne>.AddMoney(<variableTwo>)
+
+To subtract two money
+
+    <variableOne>.SubtractMoney(<variableTwo>)
 
 To check for equality of two money (returns boolean value)
 
